@@ -1,0 +1,7 @@
+{
+  "name": "WorkShopApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
