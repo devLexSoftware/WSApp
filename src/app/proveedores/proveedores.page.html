@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar class="toolbarProveedores">
+    <ion-title class="titleProveedores"><b>Proveedores</b></ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>  
+
+  <ion-grid>
+    <ion-row >
+      <ion-col size="6" *ngFor="let proveedor of proveedores">
+        <div *ngIf="proveedor.id == null ">
+          <ion-card style="margin: 0px; height: 110px;" class="cardProveedores" (click)="agregarProveedor()">          
+            <ion-card-content style="text-align: center;">
+              <ion-icon class="txtProveedores" slot="end" name="add-sharp" size="large"></ion-icon>
+              <br>
+              <p class="txtProveedores"><b>Agregar</b></p>
+            </ion-card-content>
+          </ion-card>
+        </div>        
+        <div *ngIf="proveedor.id != null ">
+          <ion-card style="margin: 0px; height: 110px;" class="cardProveedores" (click)="opcion(proveedor)">          
+            <ion-card-content style="text-align: center;">
+              <ion-icon slot="end" class="txtProveedores" name="business-sharp" size="large"></ion-icon>
+              <p class="txtProveedores"><b>{{proveedor.empresa}}</b></p>
+            </ion-card-content>
+          </ion-card>
+        </div>        
+      </ion-col>            
+    </ion-row>
+    
+  </ion-grid>
+</ion-content>

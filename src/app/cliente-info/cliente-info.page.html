@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar class="toolbarClientes">
+    <ion-title class="titleClientes"><b>Información</b></ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="fontClientes">
+
+  <ion-card class="targetClientes">
+    <ion-item>      
+      <ion-label style="text-align: center;">{{cliente.nombre}}</ion-label>      
+    </ion-item>
+  
+    <ion-card-content>
+      <p style="font-size: 18px;"><b>RFC: </b> {{ cliente.rfc }} </p>
+      <p style="font-size: 18px;"><b>Calle: </b> {{ cliente.calle }} </p>
+      <p style="font-size: 18px;"><b>Nº Ext.: </b> {{ cliente.numExt }} </p>
+      <p style="font-size: 18px;"><b>Nº Int.: </b> {{ cliente.numInt }} </p>
+      <p style="font-size: 18px;"><b>Colonia: </b> {{ cliente.colonia }} </p>
+      <p style="font-size: 18px;"><b>C.P.: </b> {{ cliente.cp }} </p>
+      <p style="font-size: 18px;"><b>Municipio: </b> {{ cliente.municipio }} </p>
+      <p style="font-size: 18px;"><b>Empresa: </b> {{ cliente.empresa }} </p>
+      <p style="font-size: 18px;"><b>Móvil: </b> {{ cliente.movil }} </p>
+    </ion-card-content>
+  </ion-card>
+  <!-- <img src="assets/imgs/grupo.png" width="40%" style="margin-left: 30%"> -->  
+  <!-- <p style="font-size: 18px;"><b>Id: </b>  {{ cliente.identificador }}</p> -->
+ 
+
+</ion-content>

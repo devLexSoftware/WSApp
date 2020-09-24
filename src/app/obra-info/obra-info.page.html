@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar class="toolbarObras">
+    <ion-title class="titleObras"><b>Información</b></ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="fontObras">
+  <ion-card class="targetObras">
+    <ion-item>      
+      <ion-label style="text-align: center;">{{obra.nombre}}</ion-label>      
+    </ion-item>
+  
+    <ion-card-content>      
+      <p style="font-size: 18px;"><b>Calle: </b> {{ obra.calle }} </p>
+      <p style="font-size: 18px;"><b>Nº Ext. </b> {{ obra.numExt }} </p>
+      <p style="font-size: 18px;"><b>Nº Int. </b> {{ obra.numInt }} </p>
+      <p style="font-size: 18px;"><b>Colonia: </b> {{ obra.colonia }} </p>
+      <p style="font-size: 18px;"><b>C.P. </b> {{ obra.cp}} </p>
+      <p style="font-size: 18px;"><b>Ciudad: </b> {{ obra.ciudad}} </p>
+      <p style="font-size: 18px;"><b>Municipio: </b> {{ obra.municipio }} </p>      
+    </ion-card-content>
+  </ion-card>
+  <!-- <img src="assets/imgs/grupo.png" width="40%" style="margin-left: 30%"> -->  
+  <!-- <p style="font-size: 18px;"><b>Id: </b>  {{ cliente.identificador }}</p> -->
+ 
+
+</ion-content>

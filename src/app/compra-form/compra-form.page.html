@@ -1,0 +1,161 @@
+<ion-header>
+  <ion-toolbar class="toolbarCompras">
+    <ion-title class="titleCompras">{{ titlePage }}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="guardarForm()">
+        <ion-icon name="checkmark-sharp"></ion-icon>
+      </ion-button>      
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="frmData" >
+    <ion-list>      
+
+      <ion-item>
+        <ion-label stacked><small>Cliente *</small></ion-label>
+        <ion-select name="fk_cliente" [formControl]="frmData.controls['fk_cliente']" (ionChange)="onClienteChange(frmData.controls.fk_cliente.value)">
+          <ion-select-option *ngFor="let cliente of clientes" [value]="cliente.id">{{ cliente.nombre }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked><small>Obra *</small></ion-label>
+        <ion-select name="fk_obra" [formControl]="frmData.controls['fk_obra']">
+          <ion-select-option *ngFor="let obra of obras" [value]="obra.id">{{ obra.nombre }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label >Semana</ion-label>
+        <ion-input name="semana" type="number" [formControl]="frmData.controls['semana']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label >Factura</ion-label>
+        <ion-input name="factura" type="text"  [formControl]="frmData.controls['factura']"></ion-input>
+      </ion-item>
+
+      <!-- <ion-item>
+        <ion-label >Fecha de Compra *</ion-label>        
+        <ion-datetime value name="fecha"  [formControl]="frmData.controls['fecha']"></ion-datetime>
+      </ion-item> -->
+
+       <!-- <ion-item >
+        <ion-label position="floating" >Periodo Inicial *</ion-label>        
+        <ion-input          
+          [formControl]="frmData.controls['fechInicial']"
+          (ionChange)="onChangeDate()"
+          [liIonic4Datepicker]="datePickerObj"
+        ></ion-input>
+      </ion-item> -->
+
+       <!-- <ion-item>
+        <ion-label >Periodo Inicial *</ion-label>        
+        <ion-datetime name="fechInicial" displayFormat="DDD D/MMM/YYYY" pickerFormat="DDD D/MMM/YYYY" [formControl]="frmData.controls['fechInicial']"></ion-datetime>
+      </ion-item> -->
+
+      <!-- <ion-item>
+        <ion-label>Periodo Final</ion-label>
+        <ion-datetime name="fechFinal" displayFormat="DDD D/MMM/YYYY" pickerFormat="DDD D/MMM/YYYY" [formControl]="frmData.controls['fechFinal']" [dayValues]="proxDomingoDia" [monthValues]="proxDomingoMes" [yearValues]="anyoActual"></ion-datetime>
+      </ion-item> -->
+
+      <ion-item >
+        <ion-label >Fecha de Compra *</ion-label>        
+        <ion-input          
+          [formControl]="frmData.controls['fecha']"      
+          (click)="openDatePicker(1)"
+        ></ion-input>
+      </ion-item>
+     
+      <ion-item >
+        <ion-label >Periodo Inicial *</ion-label>        
+        <ion-input          
+          [formControl]="frmData.controls['fechInicial']"          
+          (click)="openDatePicker(2)"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label >Periodo Final *</ion-label>
+        <ion-input readonly name="fechFinal" type="text" [formControl]="frmData.controls['fechFinal']"></ion-input>
+      </ion-item>
+           
+     
+
+      <ion-item>
+        <ion-label >Descripción</ion-label>
+        <ion-input name="descripcion" type="text"  [formControl]="frmData.controls['descripcion']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label >Frente</ion-label>
+        <ion-select name="frente" [formControl]="frmData.controls['frente']">
+          <ion-select-option *ngFor="let frente of frentes" [value]="frente.nombre">{{ frente.nombre }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label >Proceso</ion-label>
+        <ion-input name="proceso" type="text"  [formControl]="frmData.controls['proceso']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label >Unidad</ion-label>
+        <!-- <ion-input name="unidad" type="text"  [formControl]="frmData.controls['unidad']"></ion-input> -->
+        <ion-select name="unidad" [formControl]="frmData.controls['unidad']">
+          <ion-select-option *ngFor="let unidad of unidades" [value]="unidad">{{ unidad }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>        
+        <ion-label style="font-size:30px;" position="stacked">Descripción</ion-label>
+        <hr>        
+        <ion-input (ionBlur)="calcularFactura()" placeholder="Cantidad" name="cantidad" type="text" [formControl]="frmData.controls['cantidad']"></ion-input>        
+        <ion-input (ionBlur)="calcularFactura()" placeholder="Sub-Total" name="subtotal" type="text" [formControl]="frmData.controls['subtotal']"></ion-input>
+        <ion-input (ionBlur)="calcularFactura()" readonly placeholder="IVA" name="iva" type="text" [formControl]="frmData.controls['iva']"></ion-input >
+        <ion-input (ionBlur)="calcularFactura()" placeholder="Importe" name="importe" type="text" [formControl]="frmData.controls['importe']"></ion-input>
+        <ion-input (ionBlur)="calcularFactura()" placeholder="C.U." name="costo" type="text" [formControl]="frmData.controls['costo']"></ion-input>                
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked><small>Proveedores </small></ion-label>
+        <ion-select name="fk_proveedor" [formControl]="frmData.controls['fk_proveedor']" >
+          <ion-select-option *ngFor="let proveedor of proveedores" [value]="proveedor.id">{{ proveedor.empresa }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked><small>Contratistas </small></ion-label>
+        <ion-select name="fk_contratista" [formControl]="frmData.controls['fk_contratista']">
+          <ion-select-option *ngFor="let contratista of contratistas" [value]="contratista.id">{{ contratista.empresa }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="floating">Nota</ion-label>
+          <ion-textarea rows="5" name="nota" style="margin-top: 4px; margin-bottom: 4px;" [formControl]="frmData.controls['comentario']"></ion-textarea>
+      </ion-item>
+
+      <hr>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6">
+            <ion-button class="btnFoto" (click)="selectImage()" shape="round">Evidencia</ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-card *ngIf="image != ''">
+              <ion-badge color="danger" (click)="borrarImg()">X</ion-badge>
+              <img [src]="image" alt="No hay imagen" (click)="openImage(image)"/>
+              </ion-card>
+          </ion-col>          
+        </ion-row>
+      </ion-grid>
+      
+    </ion-list>   
+  </form>
+</ion-content>

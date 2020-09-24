@@ -1,0 +1,106 @@
+<ion-header>
+  <ion-toolbar class="toolbarPedidos">
+    <ion-title class="titlePedidos"><b>{{ titlePage }}</b></ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="regresar()"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="guardarForm()">
+        <ion-icon name="checkmark-sharp"></ion-icon>
+      </ion-button>      
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="frmData" (ngSubmit)="registrarPedido()">
+    <ion-list>      
+
+      <ion-item *ngIf="false">
+        <ion-input name="usuCreacion" type="text" [formControl]="frmData.controls['usuCreacion']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked><small>Obra *</small></ion-label>
+        <ion-select name="fk_obras" [formControl]="frmData.controls['fk_obra']">
+          <ion-select-option *ngFor="let obra of obras" [value]="obra.id">{{ obra.nombre }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked><small>Frente *</small></ion-label>
+        <ion-select name="frente" [formControl]="frmData.controls['frente']">
+          
+          <ion-select-option *ngFor="let frente of frentes" [value]="frente.nombre">{{ frente.nombre }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        
+        <ion-textarea rows="5" name="descripcion" placeholder="Descripción" style="margin-top: 4px; margin-bottom: 4px;" [formControl]="frmData.controls['descripcion']"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Estatus *</ion-label>
+        <ion-select name="estado" [formControl]="frmData.controls['estado']">
+          <ion-select-option *ngFor="let estado of arrEstado" [value]="estado">{{ estado }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <hr>
+      <ion-grid >
+        <ion-row>       
+          <ion-col size="6">
+            <ion-card *ngIf="frmData.controls['foto_pedido'] != ''">              
+              <img [src]="frmData.controls['foto_pedido'].value" alt="No hay imagen" (click)="openImage(frmData.controls['foto_pedido'].value)"/>
+              </ion-card>
+          </ion-col>          
+          <ion-col size="6">
+            <ion-card *ngIf="frmData.controls['foto_entregado'] != ''">              
+              <img [src]="frmData.controls['foto_entregado'].value"  alt="No hay imagen" (click)="openImage(frmData.controls['foto_entregado'].value)"/>
+              </ion-card>
+          </ion-col>          
+             
+        </ion-row>
+      </ion-grid>
+
+      <hr>
+      <ion-grid *ngIf="frmData.controls['estado'].value == 'Entregado/Recibido' || frmData.controls['estado'].value == 'Pedido'">
+        <ion-row>
+          <ion-col size="6">
+            <ion-button class="btnFoto" (click)="selectImage()" shape="round">Evidencia</ion-button>
+          </ion-col>
+          <ion-col size="6">
+            <ion-card *ngIf="image != ''">
+              <ion-badge color="danger" (click)="borrarImg()">X</ion-badge>
+              <img [src]="image"  alt="No hay imagen"/>
+              </ion-card>
+          </ion-col>          
+        </ion-row>
+      </ion-grid>
+
+
+    </ion-list>
+    
+  </form>
+
+
+  <ion-card class="targetHistorial" >
+    <ion-item>      
+      <ion-label style="text-align: center;">Historial</ion-label>      
+    </ion-item>
+    <ion-card-content>
+      <ion-list>              
+        <ion-item-sliding *ngFor="let his of historial">
+          <ion-item>          
+            <ion-label>            
+              <h3>{{his.estado}}</h3>
+              <p>{{his.fecha}}</p>
+            </ion-label>
+          </ion-item>
+        </ion-item-sliding>
+      </ion-list>      
+    </ion-card-content>
+  </ion-card>   
+
+</ion-content>

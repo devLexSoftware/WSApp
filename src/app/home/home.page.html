@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="titleHome">WorkShop Studio</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="salir()">
+        <ion-icon style="color:#373737" name="log-out-outline"></ion-icon>
+      </ion-button>      
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div *ngIf="usuario != 'administrador'">
+    <div class="center">
+      <img src="assets/imgs/logo.png" class="smallLogo"/>    
+    </div>
+  </div>
+  <div *ngIf="usuario == 'administrador'">
+  <br>
+  <ion-button class="btnClientes" expand="block" [routerLink]="['/clientes']" style="height: 100px;">
+    <ion-icon src="../../assets/icon/clientes.svg" style="height: 50px; width: 50px;" class="txtClientes" slot="start" ></ion-icon>
+    <!-- <ion-icon class="txtClientes" slot="start" name="person-sharp" size="large"></ion-icon> -->
+    <p class="txtClientes" style="font-size: 40px; ">Clientes</p>    
+  </ion-button>  
+  <hr>
+  <hr>
+  <ion-button class="btnObras" expand="block" [routerLink]="['/obras']" style="height: 100px;">
+    <ion-icon src="../../assets/icon/obras.svg" style="height: 50px; width: 50px;" class="txtObras" slot="end" ></ion-icon>
+    <!-- <ion-icon class="txtClientes" slot="start" name="person-sharp" size="large"></ion-icon> -->
+    <p class="txtObras" style="font-size: 40px; ">Obras</p>    
+  </ion-button>  
+  <hr>
+  <hr>
+  <ion-button class="btnProveedores" expand="block" [routerLink]="['/proveedores']"  style="height: 100px;">
+    <ion-icon src="../../assets/icon/proveedor.svg" style="height: 50px; width: 50px;" class="txtProveedores" slot="start" size="large"></ion-icon>
+    <!-- <ion-icon class="txtProveedores" slot="end" name="business-sharp" size="large"></ion-icon> -->
+    <p class="txtProveedores" style="font-size: 35px;">Proveedores</p>    
+  </ion-button>  
+  <hr>
+  <hr>
+  <ion-button class="btnEmpleados"  expand="block" [routerLink]="['/empleados']" style="height: 100px;">
+    <ion-icon src="../../assets/icon/empleados.svg" style="height: 50px; width: 50px;" class="txtEmpleados" slot="end" size="large"></ion-icon>
+    <!-- <ion-icon class="txtEmpleados" slot="start" name="hammer-sharp" size="large"></ion-icon> -->
+    <p class="txtEmpleados" style="font-size: 35px;">Empleados</p>    
+  </ion-button>  
+  <hr>
+  <hr>
+  <ion-button class="btnEquipos" expand="block" [routerLink]="['/equipos']" style="height: 100px;">
+    <ion-icon src="../../assets/icon/equipo.svg" style="height: 50px; width: 50px;" class="txtEquipos" slot="start" size="large"></ion-icon>
+    <!-- <ion-icon class="txtEquipos" slot="end" name="book-sharp" size="large"></ion-icon> -->
+    <p class="txtEquipos" style="font-size: 35px;">Equipos</p>    
+  </ion-button>  
+</div>
+</ion-content>

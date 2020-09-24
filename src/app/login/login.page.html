@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+  <ion-title>Iniciar Sesión</ion-title>
+  </ion-toolbar>
+</ion-header>
+  
+<ion-content padding='true'>
+  <div class="center">
+    <img src="assets/imgs/logo.png" class="smallLogo"/>    
+  </div>
+  <br>
+  <form>
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Username</ion-label>
+        <ion-input autocomplete="off" type="text" name="user" [(ngModel)]="postData.user"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Password</ion-label>
+        <ion-input autocomplete="off" type="password" name="password" [(ngModel)]="postData.password"></ion-input>
+      </ion-item>
+    </ion-list>
+    <br>
+    <ion-button expand="block" share="round" color="success" (click)="iniciarSesion()">Login</ion-button>
+  </form>
+</ion-content>
+<ion-footer >
+  <ion-toolbar>
+    <ion-label text-center><small><i>Lex Software Copyright All Reserved 2018</i></small></ion-label>
+  </ion-toolbar>
+</ion-footer>

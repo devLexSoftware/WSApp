@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar class="toolbarEmpleados">
+    <ion-title class="titleEmpleados"><b>Empleados</b></ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>  
+
+  <ion-grid>
+    <ion-row >
+      <ion-col size="6" *ngFor="let empleado of empleados">
+        <div *ngIf="empleado.id == null ">
+          <ion-card style="margin: 0px; height: 110px;" class="cardEmpleados" (click)="agregarEmpleado()">          
+            <ion-card-content style="text-align: center;">
+              <ion-icon class="txtEmpleados" slot="end" name="add-sharp" size="large"></ion-icon>
+              <br>
+              <p class="txtEmpleados" ><b>Agregar</b></p>
+            </ion-card-content>
+          </ion-card>
+        </div>        
+        <div *ngIf="empleado.id != null ">
+          <ion-card style="margin: 0px; height: 110px;" class="cardEmpleados" (click)="opcion(empleado)">          
+            <ion-card-content style="text-align: center;">
+              <ion-icon class="txtEmpleados" slot="end" name="hammer-sharp" size="large"></ion-icon>
+              <p class="txtEmpleados"><b>{{empleado.nombre}}</b></p>
+            </ion-card-content>
+          </ion-card>
+        </div>        
+      </ion-col>            
+    </ion-row>
+    
+  </ion-grid>
+</ion-content>

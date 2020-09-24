@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar class="toolbarEquipos">
+    <ion-title class="titleEquipos"><b>Información</b></ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="fontEquipos">
+
+  <ion-card class="targetEquipos">
+    <ion-item>      
+      <ion-label>{{equipo.nombre}}</ion-label>      
+    </ion-item>
+  
+    <ion-card-content>     
+      <ion-list>        
+        <ion-list-header><h4>Empleados</h4></ion-list-header>
+        <ion-item-sliding *ngFor="let empleado of empleados">
+          <ion-item>
+            <ion-icon color="primary" slot="start" name="ellipse"></ion-icon>
+            <!-- <ion-avatar slot="start"><ion-icon name="ellipse"></ion-icon></ion-avatar> -->
+            <ion-label>{{empleado.nombre}}</ion-label>
+          </ion-item>
+        </ion-item-sliding>
+      </ion-list>
+
+      <ion-list>        
+        <ion-list-header><h4>Contratistas</h4></ion-list-header>
+        <ion-item-sliding *ngFor="let contratista of contratistas">
+          <ion-item>
+            <ion-icon color="danger" slot="start" name="ellipse"></ion-icon>
+            <!-- <ion-avatar slot="start"><ion-icon name="ellipse"></ion-icon></ion-avatar> -->
+            <ion-label>{{contratista.empresa}}</ion-label>
+          </ion-item>
+        </ion-item-sliding>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

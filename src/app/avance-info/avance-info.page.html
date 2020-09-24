@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar class="toolbarAvances">
+    <ion-title class="titleAvances"><b>Información</b></ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button ></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="fontAvances">
+
+  <ion-card class="targetAvances">
+    <ion-item>      
+      <ion-label style="text-align: center;">{{avance.dia}}</ion-label>      
+    </ion-item>
+  
+    <ion-card-content>      
+      <p style="font-size: 18px;"><b>Semana: </b>  {{ avance.semana }}</p>
+      <p style="font-size: 18px;"> {{ avance.periodoInicial }} <b> al </b> {{avance.periodoFinal}}</p>
+      <p style="font-size: 18px;"><b>Comentario: </b> {{ avance.comentario }} </p>      
+    </ion-card-content>
+
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          <ion-button class="btnFoto" (click)="getFotos()" shape="round">Ver Fotos</ion-button>
+        </ion-col>          
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row >
+        <ion-col size="12" *ngFor="let imagen of imagenes">                                
+          <ion-card *ngIf="imagen != ''">            
+            <img [src]="imagen"  (click)="openImage(imagen)"/>
+            </ion-card>
+        </ion-col> 
+      </ion-row>
+    </ion-grid>
+
+  </ion-card>
+  <!-- <img src="assets/imgs/grupo.png" width="40%" style="margin-left: 30%"> -->  
+  <!-- <p style="font-size: 18px;"><b>Id: </b>  {{ cliente.identificador }}</p> -->
+ 
+
+</ion-content>
+

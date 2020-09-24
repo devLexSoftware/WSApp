@@ -1,0 +1,123 @@
+<ion-header>
+  <ion-toolbar class="toolbarObras">
+    <ion-title class="titleObras"><b>{{ titlePage }}</b></ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="guardarForm()">
+        <ion-icon name="checkmark-sharp"></ion-icon>
+      </ion-button>      
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-content padding>
+    <form [formGroup]="frmData" (ngSubmit)="registrarObra()">
+      <ion-list>        
+  
+        <ion-item *ngIf="false">
+          <ion-input name="id_obra" type="text" [formControl]="frmData.controls['id_obra']"></ion-input>
+        </ion-item>
+          
+        <ion-item>
+          <ion-label position="floating">Nombre *</ion-label>          
+          <ion-input name="nombre" type="text" [formControl]="frmData.controls['nombre']"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>Cliente *</ion-label>
+          <ion-select name="fk_clientes" [formControl]="frmData.controls['fk_clientes']">
+            <ion-select-option *ngFor="let cliente of clientes" [value]="cliente.id">{{ cliente.nombre }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label stacked>Grupo *</ion-label>
+          <ion-select name="fk_grupo" [formControl]="frmData.controls['fk_grupo']">
+            <ion-select-option *ngFor="let equipo of equipos" [value]="equipo.id" [selected]="_fk_grupo">{{ equipo.nombre }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label position="floating" >Calle *</ion-label>
+          <ion-input name="calle" type="text" [formControl]="frmData.controls['calle']"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label>Número Exterior *</ion-label>
+          <ion-input name="numExt" type="text" [formControl]="frmData.controls['numExt']"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label>Número Interior</ion-label>
+          <ion-input name="numInt" type="text" [formControl]="frmData.controls['numInt']"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label position="floating">Colonia *</ion-label>
+          <ion-input name="colonia" type="text" [formControl]="frmData.controls['colonia']"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label >C.P.</ion-label>
+          <ion-input name="cp" type="text"  [formControl]="frmData.controls['cp']"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label position="floating">Ciudad *</ion-label>
+          <ion-input name="ciudad" type="text" [formControl]="frmData.controls['ciudad']"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label position="floating" >Municipio *</ion-label>
+          <ion-input name="municipio" type="text" [formControl]="frmData.controls['municipio']"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label position="floating">Fecha de Inicio *</ion-label>
+          <ion-datetime name="fechInicio" displayFormat="DDD D/MMM/YYYY" pickerFormat="DDD D/MMM/YYYY" [formControl]="frmData.controls['fechInicio']"></ion-datetime>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label position="floating">Fecha de Finaliación *</ion-label>
+          <ion-datetime name="fechFin" displayFormat="DDD D/MMM/YYYY" pickerFormat="DDD D/MMM/YYYY" [formControl]="frmData.controls['fechFin']"></ion-datetime>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label>Avance (%) *</ion-label>
+          <ion-input name="avance" type="email" [formControl]="frmData.controls['avance']"></ion-input>
+        </ion-item>       
+
+        <ion-item>
+          <ion-label>Costo Aprox *</ion-label>
+          <ion-input name="costo" type="number" [formControl]="frmData.controls['costo']"></ion-input>
+        </ion-item> 
+
+        <ion-item>
+          <ion-label>Porcentaje Ganancia *</ion-label>
+          <ion-input name="porcentaje" type="number" [formControl]="frmData.controls['porcentaje']"></ion-input>
+        </ion-item> 
+
+        <ion-item>
+          <ion-label>Superficie Total *</ion-label>
+          <ion-input name="superficieTotal" type="number" [formControl]="frmData.controls['superficieTotal']"></ion-input>
+        </ion-item> 
+
+        <ion-item>
+          <ion-label >Superficie Aprox *</ion-label>
+          <ion-input name="superficieConstruir" type="number" [formControl]="frmData.controls['superficieConstruir']"></ion-input>
+        </ion-item> 
+       
+
+        <ion-item>
+          <ion-label position="floating">Comentario</ion-label>
+          <ion-textarea rows="5" name="comentario" style="margin-top: 4px; margin-bottom: 4px;" [formControl]="frmData.controls['comentario']"></ion-textarea>
+        </ion-item>
+  
+      </ion-list>        
+    </form>
+
+</ion-content>

@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar class="toolbarClientes">
+    <ion-title class="titleClientes"><b>{{ titlePage }}</b></ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="guardarForm()">
+        <ion-icon name="checkmark-outline"></ion-icon>
+      </ion-button>      
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-content padding>
+    <form [formGroup]="frmData" (ngSubmit)="registrarEquipo()">
+      <ion-list>                
+
+        <ion-item *ngIf="false">
+          <ion-input name="id_equipo" type="text" [formControl]="frmData.controls['id_equipo']"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Nombre del Equipo *</ion-label>
+          <ion-input name="nombreGrupo" type="text" [formControl]="frmData.controls['nombreGrupo']"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Nota</ion-label>
+          <ion-input name="notaGrupo" type="text" [formControl]="frmData.controls['notaGrupo']"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked><small>Empleados</small></ion-label>
+          <ion-select name="empleadosId[]" [(ngModel)]="_empleadosId" multiple="true" [formControl]="frmData.controls['empleadosId']" cancelText="Cancelar" okText="Ok">
+            <ion-select-option *ngFor="let empleado of empleados" [value]="empleado.id">{{ empleado.nombre }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked><small>Contratistas</small></ion-label>
+          <ion-select name="contratistasId[]" [(ngModel)]="_contratistasId" multiple="true" [formControl]="frmData.controls['contratistasId']" cancelText="Cancelar" okText="Ok">
+            <ion-select-option *ngFor="let contratista of contratistas" [value]="contratista.id">{{ contratista.empresa }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+      </ion-list>        
+      </form>
+  </ion-content>
+</ion-content>

@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar class="toolbarEmpleados">
+    <ion-title class="titleEmpleados"><b>{{ titlePage }}</b></ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="guardarForm()">
+        <ion-icon name="checkmark-sharp"></ion-icon>
+      </ion-button>      
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="frmData" (ngSubmit)="registrarEmpleado()">
+    <ion-list>      
+
+      <ion-item *ngIf="false">
+        <ion-input name="id_empleado" type="text" [formControl]="frmData.controls['id_empleado']"></ion-input>
+      </ion-item>      
+
+      <ion-item>
+        <ion-label position="floating">Nombre *</ion-label>
+        <ion-input name="nombre" type="text" [formControl]="frmData.controls['nombre']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">RFC</ion-label>
+        <ion-input name="rfc" type="text" [formControl]="frmData.controls['rfc']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Dirección</ion-label>
+        <ion-input name="direccion" type="text" [formControl]="frmData.controls['direccion']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label >Móvil *</ion-label>
+        <ion-input name="movil" type="number" [formControl]="frmData.controls['movil']" maxlength="10"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label >Telefono</ion-label>
+        <ion-input name="telefono" type="number" [formControl]="frmData.controls['telefono']" maxlength="10"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label >Email</ion-label>
+        <ion-input name="email" type="email"[formControl]="frmData.controls['email']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Empresa</ion-label>
+        <ion-input name="empresa" type="text" [formControl]="frmData.controls['empresa']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Giro</ion-label>
+        <ion-input name="giro" type="text" [formControl]="frmData.controls['giro']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">NSSI</ion-label>
+        <ion-input name="nssi" type="text" [formControl]="frmData.controls['nssi']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label >Salario</ion-label>
+        <ion-input name="salario" type="text" [formControl]="frmData.controls['salario']"></ion-input>
+      </ion-item> 
+
+      <ion-item>
+        <ion-label stacked>Categoría</ion-label>
+        <ion-select name="categoria" [formControl]="frmData.controls['categoria']">
+          <ion-select-option *ngFor="let categoria of categorias" [value]="categoria">{{ categoria }}</ion-select-option>
+        </ion-select>
+      </ion-item>      
+
+      <ion-item>
+        <ion-label position="floating">Notas</ion-label>
+          <ion-textarea rows="5" name="nota" style="margin-top: 4px; margin-bottom: 4px;" [formControl]="frmData.controls['nota']"></ion-textarea>
+      </ion-item>
+
+    </ion-list>
+
+  </form>
+</ion-content>

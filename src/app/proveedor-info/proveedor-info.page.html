@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar class="toolbarProveedores">
+    <ion-title class="titleProveedores"><b>Información</b></ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="fontProveedores">
+  <ion-card class="targetProveedores">
+    <ion-item>      
+      <ion-label style="text-align: center;">{{proveedor.empresa}}</ion-label>      
+    </ion-item>
+  
+    <ion-card-content>            
+      <p style="font-size: 18px;"><b>Descripción: </b> {{ proveedor.descripcion }} </p>
+      <p style="font-size: 18px;"><b>Dirección: </b> {{ proveedor.direccion }} </p>
+      <p style="font-size: 18px;"><b>RFC: </b> {{ proveedor.rfc }} </p>      
+      <p style="font-size: 18px;"><b>Contacto 1: </b> {{ proveedor.contacto1 }} </p>
+      <p style="font-size: 18px;"><b>Contacto 2: </b> {{ proveedor.contacto2 }} </p>
+      <p style="font-size: 18px;"><b>Correo: </b> {{ proveedor.email }} </p>
+      <p style="font-size: 18px;"><b>Comentario: </b> {{ proveedor.comentario }} </p>
+    </ion-card-content>
+  </ion-card>
+  <!-- <img src="assets/imgs/grupo.png" width="40%" style="margin-left: 30%"> -->  
+  <!-- <p style="font-size: 18px;"><b>Id: </b>  {{ cliente.identificador }}</p> -->
+ 
+
+</ion-content>

@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar class="toolbarProveedores">
+    <ion-title class="titleProveedores"><b>{{ titlePage }}</b></ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="guardarForm()">
+        <ion-icon name="checkmark-sharp"></ion-icon>
+      </ion-button>      
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="frmData" (ngSubmit)="registrarProveedor()">
+    <ion-list>
+
+      <ion-item *ngIf="false">
+        <ion-input name="id_proveedor" type="text" [formControl]="frmData.controls['id_proveedor']"></ion-input>
+      </ion-item>      
+
+      <ion-item>
+        <ion-label position="floating" >Empresa *</ion-label>
+        <ion-input name="empresa" type="text" [formControl]="frmData.controls['empresa']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating" >Nombre *</ion-label>
+        <ion-input name="proveedor" type="text" [formControl]="frmData.controls['proveedor']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating" >Descripción</ion-label>
+        <ion-input name="descripcion" type="text"  [formControl]="frmData.controls['descripcion']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label >RFC</ion-label>
+        <ion-input name="rfc" type="text" [formControl]="frmData.controls['rfc']"></ion-input>
+      </ion-item>      
+
+      <ion-item>
+        <ion-label >Móvil *</ion-label>
+        <ion-input name="contacto1" type="number" [formControl]="frmData.controls['contacto1']" ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label >Telefono </ion-label>
+        <ion-input name="contacto2" type="number" [formControl]="frmData.controls['contacto2']" ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label >Email</ion-label>
+        <ion-input name="email" type="text" [formControl]="frmData.controls['email']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Dirección</ion-label>
+        <ion-input name="direccion" type="text" [formControl]="frmData.controls['direccion']"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label >Comentario</ion-label>
+        <ion-textarea rows="5" name="comentario" style="margin-top: 4px; margin-bottom: 4px;" [formControl]="frmData.controls['comentario']"></ion-textarea>
+      </ion-item>
+
+    </ion-list>    
+  </form>
+
+</ion-content>

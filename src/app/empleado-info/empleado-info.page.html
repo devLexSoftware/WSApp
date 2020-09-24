@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar class="toolbarEmpleados">
+    <ion-title class="titleEmpleados"><b>Información</b></ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="fontEmpleados">
+  <ion-card class="targetEmpleados"> 
+    <ion-item>      
+      <ion-label style="text-align: center;">{{empleado.nombre}}</ion-label>      
+    </ion-item>
+  
+    <ion-card-content>      
+      <p style="font-size: 18px;"><b>RFC: </b> {{ empleado.rfc }} </p>
+      <p style="font-size: 18px;"><b>Empresa: </b> {{ empleado.empresa }} </p>
+      <p style="font-size: 18px;"><b>Móvil: </b> {{ empleado.movil }} </p>
+      <p style="font-size: 18px;"><b>Telefono: </b> {{ empleado.telefono }} </p>
+    </ion-card-content>
+  </ion-card>
+  <!-- <img src="assets/imgs/grupo.png" width="40%" style="margin-left: 30%"> -->  
+  <!-- <p style="font-size: 18px;"><b>Id: </b>  {{ cliente.identificador }}</p> -->
+ 
+
+</ion-content>

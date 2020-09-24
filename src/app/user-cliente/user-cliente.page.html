@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar class="toolbarAvances">
+    <ion-title class="titleAvances"><b>Avances de mi obra</b></ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="salir()">
+        <ion-icon style="color:white" name="log-out-outline"></ion-icon>
+      </ion-button>      
+    </ion-buttons>
+    <!-- <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row >
+      <ion-col size="6" *ngFor="let obra of obras">                            
+        <div *ngIf="obra.id != null ">
+          <ion-card style="margin: 0px; height: 110px;" class="cardAvances" (click)="verAvance(obra)">          
+            <ion-card-content style="text-align: center;">
+              <ion-icon class="txtAvances" slot="end"  name="person-circle-sharp" size="large"></ion-icon>
+              <p class="txtAvances"><b>{{obra.nombre}}</b></p>              
+            </ion-card-content>
+          </ion-card>        
+        </div>        
+      </ion-col>            
+    </ion-row>    
+  </ion-grid>
+</ion-content>

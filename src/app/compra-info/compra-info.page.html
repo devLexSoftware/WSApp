@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar class="toolbarCompras">
+    <ion-title class="titleCompras"><b>Información</b></ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="fontCompras">
+
+  <ion-card class="targetCompras">
+    <ion-item>      
+      <ion-label style="text-align: center;">{{compra.descripcion}}</ion-label>      
+    </ion-item>
+  
+    <ion-card-content>      
+      <p style="font-size: 18px;"><b>Semana: </b>  {{ compra.semana }}</p>
+      <p style="font-size: 18px;"><b>Factura: </b>  {{ compra.factura }}</p>
+      <p style="font-size: 18px;"><b>Fecha: </b> {{ compra.fecha }} </p>
+      <p style="font-size: 18px;"><b>Frente: </b>  {{ compra.frente }}</p>
+      <p style="font-size: 18px;"><b>Cantidad: </b>  {{ compra.cantidad }}</p>
+      <p style="font-size: 18px;"><b>Unidad: </b>  {{ compra.unidad }}</p>
+      <p style="font-size: 18px;"><b>Monto: </b> {{ compra.importe | currency }} <small>(Incluye IVA)</small></p>      
+      <p style="font-size: 18px;"><b>Proceso: </b>  {{ compra.proceso }}</p>      
+      <p style="font-size: 18px;"><b>Comentario: </b>  {{ compra.comentario }}</p>            
+    </ion-card-content>
+    <ion-card-content> 
+      <img [src]="compra.foto"  (click)="openImage(compra.foto)"/>     
+    </ion-card-content>
+  </ion-card>
+  <!-- <img src="assets/imgs/grupo.png" width="40%" style="margin-left: 30%"> -->  
+  <!-- <p style="font-size: 18px;"><b>Id: </b>  {{ cliente.identificador }}</p> -->
+ 
+
+</ion-content>

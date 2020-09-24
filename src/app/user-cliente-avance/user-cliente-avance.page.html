@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar class="toolbarAvances">
+    <ion-title class="titleAvances"><b>Avances</b></ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="regresar()"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>              
+    <ion-item-sliding *ngFor="let avance of avances">
+      <ion-item (click)="verDetalle(avance)">          
+        <ion-label>            
+          <h2><b>Sem:</b>{{avance.semana}} <b>Día:</b> {{avance.dia}} </h2>
+          <p>{{avance.periodoInicial}} <b> al </b> {{avance.periodoFinal}}</p>                    
+        </ion-label>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>    
+</ion-content>
