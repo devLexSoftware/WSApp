@@ -11,7 +11,8 @@
 </ion-header>
 
 <ion-content>
-  <ion-searchbar (ionInput)="filter($event)"></ion-searchbar>
+  <ion-searchbar [(ngModel)]="filterSemana" placeholder="Semana" (ionInput)="filterSem($event)"></ion-searchbar>
+  <ion-searchbar [(ngModel)]="filterFactura" placeholder="Factura" (ionInput)="filter($event)"></ion-searchbar>
   <ion-item>
     <ion-label>Total de compras: </ion-label>
     <ion-input [value]="sum"> $</ion-input>
@@ -22,7 +23,7 @@
       <ion-item (click)="verDetalle(compra)">          
         <ion-label>            
           <h2>{{compra.descripcion}}</h2>
-          <p><b>Factura:</b> {{compra.factura}} - <b>Importe:</b> ${{compra.importe}}</p>          
+          <p><b>Factura:</b> {{compra.factura}} - <b>Importe:</b> ${{compra.importe}}</p>   
         </ion-label>
       </ion-item>
     </ion-item-sliding>

@@ -15,7 +15,8 @@ import { Router } from '@angular/router';
 export class UserClienteComprasPage implements OnInit {
   obra: any = {};
   compras: any[] = [];
-  
+  filterSemana: string = "";
+  filterFactura: string = "";
   comprasBack: any[] = [];
   constructor(
     private activatedroute: ActivatedRoute,
@@ -63,22 +64,41 @@ export class UserClienteComprasPage implements OnInit {
   sum: number = 0;
   total(){  
     this.sum = 0;
+    let sumtem = 0;
     for (let compra of this.compras) {
-      this.sum = this.sum + Number(compra.importe);
+      sumtem = sumtem + Number(compra.importe);      
     }    
+    this.sum = sumtem.toFixed(2);    
+
   }
 
-  filter(ev: any){
+  filterSem(ev: any){
+    this.filterFactura = "";
     this.compras = this.comprasBack;
     const val = ev.target.value;
     if(val && val.trim() != ""){
       this.compras = this.comprasBack.filter((item) =>{
-        return (
-          item.id.toLowerCase().indexOf(val.toLowerCase()) > -1 || 
-          item.semana.toLowerCase().indexOf(val.toLowerCase()) > -1 ||
-          item.factura.toLowerCase().indexOf(val.toLowerCase()) > -1
+        return (          
+          item.semana.toLowerCase() == val.toLowerCase()
+
+          // item.semana.toLowerCase().indexOf(val.toLowerCase()) > -1          
         )
       })      
+    }
+    this.total();
+  }
+
+  filter(ev: any){
+    this.filterSemana = "";
+    this.compras = this.comprasBack;
+    const val = ev.target.value;
+    if(val && val.trim() != ""){
+      this.compras = this.comprasBack.filter((item) =>{
+        return (          
+          item.factura.toLowerCase() == val.toLowerCase()
+          // item.semana.toLowerCase().indexOf(val.toLowerCase()) > -1          
+        )
+      })
     }
     this.total();
   }
